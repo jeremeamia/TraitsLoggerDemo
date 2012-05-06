@@ -5,32 +5,16 @@ Integration test for the EchoLogger
 <?php
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'bootstrap.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'Ball.php';
 
-use Jeremeamia\Logger\HasLoggerTrait;
 use Jeremeamia\Logger\EchoLogger;
-use Jeremeamia\Logger\LoggableInterface;
 
-// Declare the Ball class that uses the HasLoggerTrait
-class Ball implements LoggableInterface
-{
-    use HasLoggerTrait;
-
-    protected $bounces = 0;
-
-    public function bounce()
-    {
-        $this->bounces++;
-        $this->log('info', "The ball has been bounced {$this->bounces} time(s).");
-    }
-}
-
-// Instantiate a Ball object
+// Instantiate a ball object
 $ball = (new Ball)->setLogger(new EchoLogger);
 
 // Bounce the ball 10 times
-for ($i = 0; $i < 10; $i++) {
+while ($ball->getTimesBounced() < 10) {
     $ball->bounce();
-    usleep(250000);
 }
 
 ?>
