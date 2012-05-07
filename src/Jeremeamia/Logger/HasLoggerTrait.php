@@ -35,11 +35,9 @@ trait HasLoggerTrait
     */
     public function log($level, $message)
     {
-        if (!($this->logger instanceof LoggerInterface)) {
-            throw new LoggerException();
+        if ($this->logger instanceof LoggerInterface) {
+            $this->logger->log($level, $message);
         }
-
-        $this->logger->log($level, $message);
 
         return $this;
     }

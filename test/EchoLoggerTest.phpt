@@ -1,5 +1,5 @@
 --TEST--
-Integration test for the EchoLogger
+Integration test for the EchoLogger usage
 
 --FILE--
 <?php

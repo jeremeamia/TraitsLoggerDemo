@@ -1,5 +1,5 @@
 --TEST--
-Integration test for the FileLogger
+Integration test for the FileLogger usage
 
 --FILE--
 <?php
